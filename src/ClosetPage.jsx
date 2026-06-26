@@ -104,6 +104,7 @@ function ClosetPage() {
             placeholder="Color (e.g. White)"
             value={color}
             onChange={(e) => setColor(e.target.value)}
+            style={styles.textInput}
           />
 
           <input
@@ -111,6 +112,7 @@ function ClosetPage() {
             placeholder="Style (e.g. Casual)"
             value={style}
             onChange={(e) => setStyle(e.target.value)}
+            style={styles.textInput}
           />
 
           <input
@@ -118,6 +120,7 @@ function ClosetPage() {
             placeholder="Tags (optional, e.g. summer)"
             value={tags}
             onChange={(e) => setTags(e.target.value)}
+            style={styles.textInput}
           />
 
           <button type="submit" disabled={uploading} style={styles.button}>
@@ -162,10 +165,11 @@ const styles = {
   },
   uploadCard: {
     backgroundColor: "#ffffff",
+    border: "2px solid #7e22ce",
     borderRadius: "20px",
     padding: "1.5rem",
     marginBottom: "2rem",
-    boxShadow: "0 4px 0 #f0abfc",
+    boxShadow: "0 4px 0 #c084fc",
     maxWidth: "500px",
     margin: "0 auto 2rem auto",
   },
@@ -174,14 +178,23 @@ const styles = {
     flexDirection: "column",
     gap: "0.75rem",
   },
+  textInput: {
+    padding: "0.6rem",
+    borderRadius: "10px",
+    border: "2px solid #7e22ce",
+    fontSize: "1rem",
+    fontFamily: "'Fredoka', sans-serif",
+  },
   button: {
     backgroundColor: "#c084fc",
     color: "white",
-    border: "none",
+    border: "2px solid #7e22ce",
     borderRadius: "12px",
     padding: "0.75rem",
     fontWeight: "800",
+    fontSize: "0.95rem",
     letterSpacing: "0.05em",
+    fontFamily: "'Fredoka', sans-serif",
     cursor: "pointer",
     boxShadow: "0 4px 0 #7e22ce",
   },
@@ -198,10 +211,11 @@ const styles = {
   },
   card: {
     backgroundColor: "#ffffff",
+    border: "2px solid #7e22ce",
     borderRadius: "16px",
     padding: "1rem",
     textAlign: "center",
-    boxShadow: "0 3px 0 #bbf7d0",
+    boxShadow: "0 4px 0 #c084fc",
   },
   image: {
     width: "100%",
@@ -214,6 +228,7 @@ const styles = {
     margin: "0.1rem 0",
     fontSize: "0.95rem",
     textTransform: "capitalize",
+    fontFamily: "'Fredoka', sans-serif",
   },
   cardTextMuted: {
     margin: "0.1rem 0",
