@@ -41,50 +41,64 @@ function MixMatchPage() {
   }
 
   if (loading) {
-    return <p>Loading your closet...</p>;
+    return <p className="wardrobe-loading">Loading your closet</p>;
   }
 
   return (
     <div>
-      <p style={styles.intro}>
+      <p className="wardrobe-intro">
         Build your own look -- browse each category and mix it your way!
       </p>
 
-      <div style={styles.slotsContainer}>
+      <div className="wardrobe-slots-container">
         {SLOTS.map((slot) => {
           const items = itemsForSlot(slot);
           const currentIndex = selectedIndex[slot] ?? 0;
           const currentItem = items[currentIndex];
 
           return (
-            <div key={slot} style={styles.slotCard}>
-              <p style={styles.slotLabel}>{slot.toUpperCase()}</p>
+            <div key={slot} className="wardrobe-slot-card">
+              <div className="wardrobe-slot-header">
+                <p className="wardrobe-slot-label">{slot.toUpperCase()}</p>
+              </div>
 
-              {items.length === 0 ? (
-                <p style={styles.emptySlot}>No {slot} yet!</p>
-              ) : (
-                <div style={styles.browseRow}>
-                  <button style={styles.arrowButton} onClick={() => cycle(slot, -1)}>
-                    {"<"}
-                  </button>
+              <div className="wardrobe-slot-body">
+                {items.length === 0 ? (
+                  <p className="wardrobe-empty wardrobe-empty-slot">
+                    No {slot} yet!
+                  </p>
+                ) : (
+                  <div className="wardrobe-browse-row">
+                    <button
+                      className="wardrobe-btn-arrow"
+                      onClick={() => cycle(slot, -1)}
+                      aria-label={`Previous ${slot}`}
+                    >
+                      {"<"}
+                    </button>
 
-                  <div style={styles.itemPreview}>
-                    <img
-                      src={currentItem.image_url}
-                      alt={currentItem.color}
-                      style={styles.itemImage}
-                    />
-                    <p style={styles.itemCaption}>{currentItem.color}</p>
-                    <p style={styles.itemCounter}>
-                      {currentIndex + 1} / {items.length}
-                    </p>
+                    <div className="wardrobe-item-preview">
+                      <img
+                        src={currentItem.image_url}
+                        alt={currentItem.color}
+                        className="wardrobe-paper-doll-image"
+                      />
+                      <p className="wardrobe-item-caption">{currentItem.color}</p>
+                      <p className="wardrobe-item-counter">
+                        {currentIndex + 1} / {items.length}
+                      </p>
+                    </div>
+
+                    <button
+                      className="wardrobe-btn-arrow"
+                      onClick={() => cycle(slot, 1)}
+                      aria-label={`Next ${slot}`}
+                    >
+                      {">"}
+                    </button>
                   </div>
-
-                  <button style={styles.arrowButton} onClick={() => cycle(slot, 1)}>
-                    {">"}
-                  </button>
-                </div>
-              )}
+                )}
+              </div>
             </div>
           );
         })}
@@ -92,83 +106,5 @@ function MixMatchPage() {
     </div>
   );
 }
-
-const styles = {
-  intro: {
-    textAlign: "center",
-    color: "#7e22ce",
-    fontWeight: "600",
-    marginBottom: "1.5rem",
-  },
-  slotsContainer: {
-    display: "flex",
-    flexDirection: "column",
-    gap: "1.25rem",
-    maxWidth: "420px",
-    margin: "0 auto",
-  },
-  slotCard: {
-    backgroundColor: "#ffffff",
-    border: "2px solid #7e22ce",
-    borderRadius: "16px",
-    padding: "1rem",
-    boxShadow: "0 4px 0 #c084fc",
-  },
-  slotLabel: {
-    margin: "0 0 0.5rem 0",
-    fontWeight: "700",
-    fontSize: "0.85rem",
-    letterSpacing: "0.1em",
-    color: "#7e22ce",
-    fontFamily: "'Fredoka', sans-serif",
-  },
-  emptySlot: {
-    color: "#aaa",
-    fontStyle: "italic",
-    margin: 0,
-  },
-  browseRow: {
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    gap: "0.75rem",
-  },
-  arrowButton: {
-    backgroundColor: "#c084fc",
-    color: "white",
-    border: "2px solid #7e22ce",
-    borderRadius: "10px",
-    width: "40px",
-    height: "40px",
-    fontSize: "1.2rem",
-    fontWeight: "900",
-    cursor: "pointer",
-    boxShadow: "0 3px 0 #7e22ce",
-    flexShrink: 0,
-    fontFamily: "'Fredoka', sans-serif",
-  },
-  itemPreview: {
-    flex: 1,
-    textAlign: "center",
-  },
-  itemImage: {
-    width: "100%",
-    maxWidth: "200px",
-    height: "160px",
-    objectFit: "cover",
-    borderRadius: "12px",
-  },
-  itemCaption: {
-    margin: "0.4rem 0 0 0",
-    fontSize: "0.9rem",
-    textTransform: "capitalize",
-    fontFamily: "'Fredoka', sans-serif",
-  },
-  itemCounter: {
-    margin: "0.1rem 0 0 0",
-    fontSize: "0.75rem",
-    color: "#aaa",
-  },
-};
 
 export default MixMatchPage;

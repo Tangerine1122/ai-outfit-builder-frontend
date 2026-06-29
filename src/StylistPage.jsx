@@ -69,168 +69,57 @@ function StylistPage() {
 
   return (
     <div>
-      <section style={styles.askCard}>
-        <h2 style={styles.sectionTitle}>What's the occasion?</h2>
-        <form onSubmit={handleAsk} style={styles.form}>
+      <section className="wardrobe-card">
+        <h2 className="wardrobe-section-title">What's the occasion?</h2>
+        <form onSubmit={handleAsk} className="wardrobe-form">
           <input
             type="text"
             placeholder="e.g. What should I wear to a coffee date?"
             value={prompt}
             onChange={(e) => setPrompt(e.target.value)}
-            style={styles.textInput}
+            className="wardrobe-input"
           />
-          <button type="submit" disabled={loading} style={styles.button}>
+          <button type="submit" disabled={loading} className="wardrobe-btn">
             {loading ? "Thinking..." : "DRESS ME!"}
           </button>
-          {error && <p style={styles.error}>{error}</p>}
+          {error && <p className="wardrobe-error">{error}</p>}
         </form>
       </section>
 
       {/* The fun "MIS-MATCH" moment: shown instead of the normal result
           when our own validate_outfit() caught a problem with the AI's pick. */}
       {hasMismatch && (
-        <div style={styles.mismatchBanner}>
-          <p style={styles.mismatchText}>MIS-MATCH!</p>
-          <p style={styles.mismatchSubtext}>
+        <div className="wardrobe-mismatch-banner">
+          <p className="wardrobe-mismatch-text">MIS-MATCH!</p>
+          <p className="wardrobe-mismatch-subtext">
             Even our AI stylist had an off day -- try asking again!
           </p>
         </div>
       )}
 
       {result && !hasMismatch && (
-        <section style={styles.resultSection}>
+        <section className="wardrobe-result-section">
           {/* The "paper doll" -- outfit pieces stacked vertically */}
-          <div style={styles.paperDoll}>
+          <div className="wardrobe-paper-doll">
             {outfitItems.map((item) => (
-              <div key={item.id} style={styles.paperDollCard}>
-                <img src={item.image_url} alt={item.color} style={styles.paperDollImage} />
-                <p style={styles.cardTextMuted}>{item.category}</p>
+              <div key={item.id} className="wardrobe-paper-doll-card">
+                <img
+                  src={item.image_url}
+                  alt={item.color}
+                  className="wardrobe-paper-doll-image"
+                />
+                <p className="wardrobe-card-text wardrobe-muted">{item.category}</p>
               </div>
             ))}
           </div>
 
-          <div style={styles.reasonCard}>
-            <p style={styles.reasonText}>{result.reason}</p>
+          <div className="wardrobe-reason-card">
+            <p className="wardrobe-reason-text">{result.reason}</p>
           </div>
         </section>
       )}
     </div>
   );
 }
-
-const styles = {
-  sectionTitle: {
-    fontSize: "1.2rem",
-    fontWeight: "700",
-    color: "#7e22ce",
-    marginBottom: "0.75rem",
-  },
-  askCard: {
-    backgroundColor: "#ffffff",
-    border: "2px solid #7e22ce",
-    borderRadius: "20px",
-    padding: "1.5rem",
-    marginBottom: "2rem",
-    boxShadow: "0 4px 0 #c084fc",
-    maxWidth: "500px",
-    margin: "0 auto 2rem auto",
-  },
-  form: {
-    display: "flex",
-    flexDirection: "column",
-    gap: "0.75rem",
-  },
-  textInput: {
-    padding: "0.6rem",
-    borderRadius: "10px",
-    border: "2px solid #7e22ce",
-    fontSize: "1rem",
-    fontFamily: "'Fredoka', sans-serif",
-  },
-  button: {
-    backgroundColor: "#c084fc",
-    color: "white",
-    border: "2px solid #7e22ce",
-    borderRadius: "12px",
-    padding: "0.75rem",
-    fontWeight: "800",
-    fontSize: "0.95rem",
-    letterSpacing: "0.05em",
-    fontFamily: "'Fredoka', sans-serif",
-    cursor: "pointer",
-    boxShadow: "0 4px 0 #7e22ce",
-  },
-  error: {
-    color: "#dc2626",
-    fontWeight: "600",
-  },
-  mismatchBanner: {
-    backgroundColor: "#fef08a",
-    border: "3px dashed #ca8a04",
-    borderRadius: "16px",
-    padding: "1.5rem",
-    textAlign: "center",
-    maxWidth: "500px",
-    margin: "0 auto",
-  },
-  mismatchText: {
-    fontSize: "2rem",
-    fontWeight: "900",
-    color: "#ca8a04",
-    letterSpacing: "0.05em",
-    margin: 0,
-    fontFamily: "'Fredoka', sans-serif",
-  },
-  mismatchSubtext: {
-    color: "#854d0e",
-    marginTop: "0.5rem",
-  },
-  resultSection: {
-    maxWidth: "400px",
-    margin: "0 auto",
-  },
-  paperDoll: {
-    display: "flex",
-    flexDirection: "column",
-    gap: "1rem",
-    alignItems: "center",
-  },
-  paperDollCard: {
-    backgroundColor: "#ffffff",
-    border: "2px solid #7e22ce",
-    borderRadius: "16px",
-    padding: "0.75rem",
-    textAlign: "center",
-    boxShadow: "0 4px 0 #c084fc",
-    width: "200px",
-  },
-  paperDollImage: {
-    width: "100%",
-    height: "160px",
-    objectFit: "cover",
-    borderRadius: "12px",
-  },
-  cardTextMuted: {
-    margin: "0.4rem 0 0 0",
-    fontSize: "0.85rem",
-    color: "#888",
-    textTransform: "capitalize",
-    fontFamily: "'Fredoka', sans-serif",
-  },
-  reasonCard: {
-    backgroundColor: "#ffffff",
-    border: "2px solid #7e22ce",
-    borderRadius: "16px",
-    padding: "1.25rem",
-    marginTop: "1.5rem",
-    boxShadow: "0 4px 0 #c084fc",
-  },
-  reasonText: {
-    margin: 0,
-    fontStyle: "italic",
-    color: "#555",
-    lineHeight: "1.5",
-  },
-};
 
 export default StylistPage;

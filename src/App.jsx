@@ -2,27 +2,28 @@ import { BrowserRouter, Routes, Route, Link, useLocation } from "react-router-do
 import ClosetPage from "./ClosetPage";
 import StylistPage from "./StylistPage";
 import MixMatchPage from "./MixMatchPage";
+import "./wardrobe-theme.css";
 
 function NavTabs() {
   const location = useLocation();
 
   return (
-    <nav style={styles.nav}>
+    <nav className="nav-tabs">
       <Link
         to="/"
-        style={location.pathname === "/" ? styles.tabActive : styles.tab}
+        className={`nav-tab${location.pathname === "/" ? " nav-tab-active" : ""}`}
       >
         CLOSET
       </Link>
       <Link
         to="/stylist"
-        style={location.pathname === "/stylist" ? styles.tabActive : styles.tab}
+        className={`nav-tab${location.pathname === "/stylist" ? " nav-tab-active" : ""}`}
       >
         STYLIST
       </Link>
       <Link
         to="/mix-match"
-        style={location.pathname === "/mix-match" ? styles.tabActive : styles.tab}
+        className={`nav-tab${location.pathname === "/mix-match" ? " nav-tab-active" : ""}`}
       >
         MIX & MATCH
       </Link>
@@ -30,16 +31,28 @@ function NavTabs() {
   );
 }
 
+function AnimatedHeader() {
+  return (
+    <div className="pinstripe title-bar">
+      <div className="traffic-lights" aria-hidden="true">
+        <span className="traffic-dot traffic-dot-red" />
+        <span className="traffic-dot traffic-dot-gold" />
+        <span className="traffic-dot traffic-dot-green" />
+      </div>
+      <span className="titleBarText">DEE'S WARDROBE.exe</span>
+      <div className="title-bar-spacer" aria-hidden="true" />
+    </div>
+  );
+}
+
 function App() {
   return (
     <BrowserRouter>
-      <div style={styles.pageBackground}>
-        <div style={styles.monitor}>
-          <div style={styles.titleBar}>
-            <span style={styles.titleBarText}>DEE'S WARDROBE.exe</span>
-          </div>
+      <div className="page-backdrop">
+        <div className="mac-window">
+          <AnimatedHeader />
 
-          <div style={styles.screenContent}>
+          <div className="screen-content">
             <NavTabs />
 
             <Routes>
@@ -53,70 +66,5 @@ function App() {
     </BrowserRouter>
   );
 }
-
-const styles = {
-  pageBackground: {
-    backgroundColor: "#e9d5ff",
-    minHeight: "100vh",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "flex-start",
-    padding: "2rem 1rem",
-    fontFamily: "'Fredoka', sans-serif",
-  },
-  monitor: {
-    backgroundColor: "#fdf2f8",
-    border: "6px solid #7e22ce",
-    borderRadius: "20px",
-    maxWidth: "900px",
-    width: "100%",
-    boxShadow: "0 10px 0 #c084fc",
-    overflow: "hidden",
-  },
-  titleBar: {
-    backgroundColor: "#7e22ce",
-    padding: "0.6rem 1.2rem",
-  },
-  titleBarText: {
-    color: "white",
-    fontWeight: "700",
-    fontSize: "0.9rem",
-    letterSpacing: "0.1em",
-  },
-  screenContent: {
-    padding: "2rem",
-  },
-  nav: {
-    display: "flex",
-    justifyContent: "center",
-    gap: "1rem",
-    marginBottom: "2rem",
-    flexWrap: "wrap",
-  },
-  tab: {
-    textDecoration: "none",
-    color: "#7e22ce",
-    fontWeight: "700",
-    fontSize: "0.95rem",
-    letterSpacing: "0.05em",
-    padding: "0.6rem 1.5rem",
-    borderRadius: "10px",
-    backgroundColor: "#ffffff",
-    border: "2px solid #7e22ce",
-    boxShadow: "0 4px 0 #7e22ce",
-  },
-  tabActive: {
-    textDecoration: "none",
-    color: "white",
-    fontWeight: "700",
-    fontSize: "0.95rem",
-    letterSpacing: "0.05em",
-    padding: "0.6rem 1.5rem",
-    borderRadius: "10px",
-    backgroundColor: "#c084fc",
-    border: "2px solid #7e22ce",
-    boxShadow: "0 4px 0 #7e22ce",
-  },
-};
 
 export default App;

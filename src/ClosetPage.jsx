@@ -82,16 +82,25 @@ function ClosetPage() {
 
   return (
     <div>
-      <section style={styles.uploadCard}>
-        <h2 style={styles.sectionTitle}>Add a New Item</h2>
-        <form onSubmit={handleUpload} style={styles.form}>
-          <input
-            type="file"
-            accept="image/*"
-            onChange={(e) => setFile(e.target.files[0])}
-          />
+      <section className="wardrobe-card">
+        <h2 className="wardrobe-section-title">Add a New Item</h2>
+        <form onSubmit={handleUpload} className="wardrobe-form">
+          <div className="wardrobe-file-wrap">
+            <input
+              type="file"
+              accept="image/*"
+              id="closet-photo-upload"
+              className="wardrobe-file"
+              onChange={(e) => setFile(e.target.files[0])}
+            />
+            {file && <span className="wardrobe-file-name">{file.name}</span>}
+          </div>
 
-          <select value={category} onChange={(e) => setCategory(e.target.value)}>
+          <select
+            className="wardrobe-select"
+            value={category}
+            onChange={(e) => setCategory(e.target.value)}
+          >
             {CATEGORIES.map((c) => (
               <option key={c} value={c}>
                 {c}
@@ -104,7 +113,7 @@ function ClosetPage() {
             placeholder="Color (e.g. White)"
             value={color}
             onChange={(e) => setColor(e.target.value)}
-            style={styles.textInput}
+            className="wardrobe-input"
           />
 
           <input
@@ -112,7 +121,7 @@ function ClosetPage() {
             placeholder="Style (e.g. Casual)"
             value={style}
             onChange={(e) => setStyle(e.target.value)}
-            style={styles.textInput}
+            className="wardrobe-input"
           />
 
           <input
@@ -120,33 +129,35 @@ function ClosetPage() {
             placeholder="Tags (optional, e.g. summer)"
             value={tags}
             onChange={(e) => setTags(e.target.value)}
-            style={styles.textInput}
+            className="wardrobe-input"
           />
 
-          <button type="submit" disabled={uploading} style={styles.button}>
+          <button type="submit" disabled={uploading} className="wardrobe-btn">
             {uploading ? "Uploading..." : "DRESS ME UP"}
           </button>
 
-          {uploadError && <p style={styles.error}>{uploadError}</p>}
+          {uploadError && <p className="wardrobe-error">{uploadError}</p>}
         </form>
       </section>
 
       <section>
-        <h2 style={styles.sectionTitle}>Your Closet</h2>
+        <h2 className="wardrobe-section-title wardrobe-section-title--left">
+          Your Closet
+        </h2>
         {loading ? (
-          <p>Loading your closet...</p>
+          <p className="wardrobe-loading">Loading your closet</p>
         ) : clothes.length === 0 ? (
-          <p>No items yet -- add your first one above!</p>
+          <p className="wardrobe-empty">No items yet -- add your first one above!</p>
         ) : (
-          <div style={styles.grid}>
+          <div className="wardrobe-grid">
             {clothes.map((item) => (
-              <div key={item.id} style={styles.card}>
-                <img src={item.image_url} alt={item.color} style={styles.image} />
-                <p style={styles.cardText}>
+              <div key={item.id} className="wardrobe-item-card">
+                <img src={item.image_url} alt={item.color} className="wardrobe-image" />
+                <p className="wardrobe-card-text">
                   <strong>{item.category}</strong>
                 </p>
-                <p style={styles.cardText}>{item.color}</p>
-                <p style={styles.cardTextMuted}>{item.style}</p>
+                <p className="wardrobe-card-text">{item.color}</p>
+                <p className="wardrobe-card-text wardrobe-muted">{item.style}</p>
               </div>
             ))}
           </div>
@@ -155,86 +166,5 @@ function ClosetPage() {
     </div>
   );
 }
-
-const styles = {
-  sectionTitle: {
-    fontSize: "1.2rem",
-    fontWeight: "700",
-    color: "#7e22ce",
-    marginBottom: "0.75rem",
-  },
-  uploadCard: {
-    backgroundColor: "#ffffff",
-    border: "2px solid #7e22ce",
-    borderRadius: "20px",
-    padding: "1.5rem",
-    marginBottom: "2rem",
-    boxShadow: "0 4px 0 #c084fc",
-    maxWidth: "500px",
-    margin: "0 auto 2rem auto",
-  },
-  form: {
-    display: "flex",
-    flexDirection: "column",
-    gap: "0.75rem",
-  },
-  textInput: {
-    padding: "0.6rem",
-    borderRadius: "10px",
-    border: "2px solid #7e22ce",
-    fontSize: "1rem",
-    fontFamily: "'Fredoka', sans-serif",
-  },
-  button: {
-    backgroundColor: "#c084fc",
-    color: "white",
-    border: "2px solid #7e22ce",
-    borderRadius: "12px",
-    padding: "0.75rem",
-    fontWeight: "800",
-    fontSize: "0.95rem",
-    letterSpacing: "0.05em",
-    fontFamily: "'Fredoka', sans-serif",
-    cursor: "pointer",
-    boxShadow: "0 4px 0 #7e22ce",
-  },
-  error: {
-    color: "#dc2626",
-    fontWeight: "600",
-  },
-  grid: {
-    display: "grid",
-    gridTemplateColumns: "repeat(auto-fill, minmax(180px, 1fr))",
-    gap: "1.5rem",
-    maxWidth: "1000px",
-    margin: "0 auto",
-  },
-  card: {
-    backgroundColor: "#ffffff",
-    border: "2px solid #7e22ce",
-    borderRadius: "16px",
-    padding: "1rem",
-    textAlign: "center",
-    boxShadow: "0 4px 0 #c084fc",
-  },
-  image: {
-    width: "100%",
-    height: "180px",
-    objectFit: "cover",
-    borderRadius: "12px",
-    marginBottom: "0.5rem",
-  },
-  cardText: {
-    margin: "0.1rem 0",
-    fontSize: "0.95rem",
-    textTransform: "capitalize",
-    fontFamily: "'Fredoka', sans-serif",
-  },
-  cardTextMuted: {
-    margin: "0.1rem 0",
-    fontSize: "0.85rem",
-    color: "#888",
-  },
-};
 
 export default ClosetPage;
