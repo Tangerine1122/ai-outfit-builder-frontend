@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-const API_URL = "http://localhost:8000";
+const API_URL = import.meta.env.VITE_API_URL;
 
 function StylistPage() {
   // The full closet, fetched once, so we can look up image/color/style
