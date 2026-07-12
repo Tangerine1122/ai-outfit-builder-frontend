@@ -49,6 +49,11 @@ function App() {
   return (
     <BrowserRouter>
       <div className="page-backdrop">
+        <span className="sparkle sparkle-1">✦</span>
+        <span className="sparkle sparkle-2">✧</span>
+        <span className="sparkle sparkle-3">✦</span>
+        <span className="sparkle sparkle-4">✧</span>
+        <span className="sparkle sparkle-5">✦</span>
         <div className="mac-window">
           <AnimatedHeader />
 

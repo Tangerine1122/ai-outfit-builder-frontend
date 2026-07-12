@@ -93,12 +93,15 @@ body {
 .page-backdrop::after {
   content: "✦";
   position: fixed;
-  color: rgba(251, 191, 36, 0.45);
-  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 1.6rem;
   pointer-events: none;
   z-index: 0;
-  animation: sparkleDrift 4s ease-in-out infinite;
-  text-shadow: 0 0 8px rgba(251, 191, 36, 0.6);
+  animation: sparkleDrift 3s ease-in-out infinite;
+  text-shadow:
+    0 0 8px rgba(255, 255, 255, 0.9),
+    0 0 20px rgba(236, 8, 104, 0.7),
+    0 0 35px rgba(251, 191, 36, 0.5);
 }
 
 .page-backdrop::before {
@@ -110,8 +113,8 @@ body {
 .page-backdrop::after {
   bottom: 18%;
   right: 10%;
-  animation-delay: 2s;
-  font-size: 0.85rem;
+  animation-delay: 1.5s;
+  font-size: 1.2rem;
 }
 
 /* ─── Mac window ─── */
@@ -196,13 +199,13 @@ body {
 .titleBarText {
   display: inline-block;
   font-family: var(--font-display);
-  color: var(--ww-gold);
+  color: var(--ww-pink);
   font-weight: 400;
   font-size: clamp(0.85rem, 2.8vw, 1.15rem);
   letter-spacing: 0.07em;
-  text-shadow:
+text-shadow:
     1px 1px 0 var(--ww-charcoal),
-    0 0 12px rgba(251, 191, 36, 0.45);
+    0 0 12px rgba(236, 8, 104, 0.45);
   flex: 1;
   text-align: center;
   animation:
@@ -275,7 +278,7 @@ body {
   position: relative;
   overflow: hidden;
   text-decoration: none;
-  color: var(--ww-black);
+  color: #ffffff;
   font-family: var(--font-display);
   font-weight: 400;
   font-size: clamp(0.72rem, 2.2vw, 0.88rem);
@@ -287,17 +290,17 @@ body {
   transition: transform 0.15s ease, box-shadow 0.15s ease, filter 0.15s ease;
   background: linear-gradient(
     180deg,
-    #ffffff 0%,
-    #f3f4f6 18%,
-    #e5e7eb 45%,
-    #f9fafb 70%,
-    #ffffff 100%
+    #ff6eb4 0%,
+    #f0057a 25%,
+    var(--ww-pink) 55%,
+    #b8005c 88%,
+    #8a0044 100%
   );
   box-shadow:
     0 4px 0 var(--ww-charcoal),
-    inset 0 2px 0 rgba(255, 255, 255, 0.95),
-    inset 0 -2px 0 rgba(0, 0, 0, 0.06);
-  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.8);
+    inset 0 2px 0 rgba(255, 255, 255, 0.75),
+    inset 0 -2px 0 rgba(138, 0, 68, 0.25);
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.25);
 }
 
 .nav-tab::before {
@@ -328,11 +331,11 @@ body {
 
 .nav-tab:hover {
   transform: translateY(-2px);
-  filter: brightness(1.03);
+  filter: brightness(1.08);
   box-shadow:
     0 6px 0 var(--ww-charcoal),
-    0 0 16px rgba(251, 191, 36, 0.3),
-    inset 0 2px 0 rgba(255, 255, 255, 0.95);
+    0 0 16px rgba(236, 8, 104, 0.4),
+    inset 0 2px 0 rgba(255, 255, 255, 0.75);
 }
 
 .nav-tab:hover::after {
@@ -378,20 +381,20 @@ body {
   transition: transform 0.15s ease, box-shadow 0.15s ease, filter 0.15s ease;
   background: linear-gradient(
     180deg,
-    #fffbeb 0%,
-    var(--ww-gold-light) 12%,
-    var(--ww-gold) 48%,
-    var(--ww-gold-dark) 88%,
-    #b45309 100%
+    #ff6eb4 0%,
+    #f0057a 25%,
+    var(--ww-pink) 55%,
+    #b8005c 88%,
+    #8a0044 100%
   );
-  color: var(--ww-black);
+  color: #ffffff;
   font-weight: 400;
   box-shadow:
     0 5px 0 var(--ww-charcoal),
     inset 0 2px 0 rgba(255, 255, 255, 0.75),
-    inset 0 -3px 0 rgba(180, 83, 9, 0.2),
-    0 0 0 1px rgba(251, 191, 36, 0.3);
-  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.45);
+    inset 0 -3px 0 rgba(138, 0, 68, 0.3),
+    0 0 0 1px rgba(236, 8, 104, 0.3);
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.3);
 }
 
 .wardrobe-btn::before,
@@ -446,7 +449,7 @@ body {
   filter: brightness(1.05);
   box-shadow:
     0 7px 0 var(--ww-charcoal),
-    0 0 20px rgba(251, 191, 36, 0.45),
+    0 0 20px rgba(236, 8, 104, 0.45),
     inset 0 2px 0 rgba(255, 255, 255, 0.8);
 }
 
@@ -540,8 +543,45 @@ body {
   border-radius: 2px;
 }
 
+.wardrobe-section-title--left {
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+  background: linear-gradient(
+    180deg,
+    #ff6eb4 0%,
+    #f0057a 25%,
+    var(--ww-pink) 55%,
+    #b8005c 88%,
+    #8a0044 100%
+  );
+  color: #ffffff;
+  padding: 0.4rem 1rem;
+  border-radius: 8px;
+  border: 2px solid var(--ww-charcoal);
+  box-shadow:
+    0 3px 0 var(--ww-charcoal),
+    inset 0 2px 0 rgba(255, 255, 255, 0.75),
+    inset 0 -2px 0 rgba(138, 0, 68, 0.3),
+    0 0 12px rgba(236, 8, 104, 0.3);
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.3);
+  margin-bottom: 1rem;
+}
+
+.wardrobe-section-title--left::before {
+  content: "";
+  position: absolute;
+  top: 2px;
+  left: 8%;
+  right: 8%;
+  height: 40%;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.55) 0%, transparent 100%);
+  border-radius: 6px 6px 50% 50%;
+  pointer-events: none;
+}
+
 .wardrobe-section-title--left::after {
-  margin-left: 0;
+  display: none;
 }
 
 /* ─── Form ─── */
@@ -887,7 +927,14 @@ body {
 }
 
 .wardrobe-slot-header {
-  background: linear-gradient(180deg, var(--ww-purple-light) 0%, var(--ww-purple) 55%, #581c87 100%);
+  background: linear-gradient(
+    180deg,
+    #ff6eb4 0%,
+    #f0057a 25%,
+    var(--ww-pink) 55%,
+    #b8005c 88%,
+    #8a0044 100%
+  );
   padding: 0.5rem 1rem;
   border-bottom: 2px solid var(--ww-charcoal);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2);
@@ -1004,4 +1051,60 @@ body {
   .wardrobe-btn-arrow::before {
     display: none;
   }
+}
+
+/* ─── Extra sparkles ─── */
+.sparkle {
+  position: fixed;
+  pointer-events: none;
+  z-index: 0;
+  color: rgba(255, 255, 255, 0.9);
+  animation: sparkleDrift 3.5s ease-in-out infinite;
+  text-shadow:
+    0 0 8px rgba(255, 255, 255, 0.95),
+    0 0 20px rgba(236, 8, 104, 0.7),
+    0 0 35px rgba(251, 191, 36, 0.5);
+}
+
+.sparkle-1 {
+  top: 8%;
+  right: 12%;
+  font-size: 1.4rem;
+  animation-delay: 0.5s;
+}
+
+.sparkle-2 {
+  top: 45%;
+  left: 4%;
+  font-size: 0.9rem;
+  animation-delay: 1.2s;
+  color: rgba(251, 191, 36, 0.9);
+  text-shadow:
+    0 0 8px rgba(251, 191, 36, 0.9),
+    0 0 20px rgba(236, 8, 104, 0.5);
+}
+
+.sparkle-3 {
+  bottom: 30%;
+  left: 7%;
+  font-size: 1.1rem;
+  animation-delay: 2s;
+}
+
+.sparkle-4 {
+  top: 22%;
+  right: 6%;
+  font-size: 0.75rem;
+  animation-delay: 0.3s;
+  color: rgba(251, 191, 36, 0.85);
+  text-shadow:
+    0 0 8px rgba(251, 191, 36, 0.9),
+    0 0 20px rgba(236, 8, 104, 0.5);
+}
+
+.sparkle-5 {
+  bottom: 8%;
+  left: 15%;
+  font-size: 1.25rem;
+  animation-delay: 1.7s;
 }
