@@ -9,6 +9,7 @@ function ClosetPage() {
   const [loading, setLoading] = useState(true);
   const [uploading, setUploading] = useState(false);
   const [uploadError, setUploadError] = useState(null);
+  const [deletingId, setDeletingId] = useState(null); // tracks which item is being deleted
 
   const [file, setFile] = useState(null);
   const [category, setCategory] = useState(CATEGORIES[0]);
@@ -77,6 +78,33 @@ function ClosetPage() {
       .catch((error) => {
         setUploadError(error.message);
         setUploading(false);
+      });
+  }
+
+  function handleDelete(itemId) {
+    // Ask for confirmation before deleting -- prevents accidental taps
+    if (!window.confirm("Remove this item from your closet?")) return;
+
+    setDeletingId(itemId);
+
+    fetch(`${API_URL}/clothes/${itemId}`, {
+      method: "DELETE",
+    })
+      .then((response) => {
+        if (!response.ok) {
+          return response.json().then((errData) => {
+            throw new Error(errData.detail || "Delete failed");
+          });
+        }
+        return response.json();
+      })
+      .then(() => {
+        setDeletingId(null);
+        loadClothes(); // refresh the grid
+      })
+      .catch((error) => {
+        console.error("Failed to delete item:", error);
+        setDeletingId(null);
       });
   }
 
@@ -158,6 +186,13 @@ function ClosetPage() {
                 </p>
                 <p className="wardrobe-card-text">{item.color}</p>
                 <p className="wardrobe-card-text wardrobe-muted">{item.style}</p>
+                <button
+                  className="wardrobe-btn-delete"
+                  onClick={() => handleDelete(item.id)}
+                  disabled={deletingId === item.id}
+                >
+                  {deletingId === item.id ? "Removing..." : "REMOVE"}
+                </button>
               </div>
             ))}
           </div>

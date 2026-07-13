@@ -1115,3 +1115,51 @@ text-shadow:
   font-size: 1.25rem;
   animation-delay: 1.7s;
 }
+
+/* ─── Delete button ─── */
+.wardrobe-btn-delete {
+  position: relative;
+  overflow: hidden;
+  margin-top: 0.5rem;
+  width: 100%;
+  padding: 0.45rem 0.75rem;
+  border-radius: 10px;
+  border: 2px solid var(--ww-charcoal);
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  color: #ffffff;
+  background: linear-gradient(
+    180deg,
+    #ff6b6b 0%,
+    #ef4444 30%,
+    #dc2626 65%,
+    #991b1b 100%
+  );
+  box-shadow:
+    0 3px 0 var(--ww-charcoal),
+    inset 0 2px 0 rgba(255, 255, 255, 0.6),
+    inset 0 -2px 0 rgba(153, 27, 27, 0.3);
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.3);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.wardrobe-btn-delete:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow:
+    0 4px 0 var(--ww-charcoal),
+    0 0 12px rgba(220, 38, 38, 0.4),
+    inset 0 2px 0 rgba(255, 255, 255, 0.6);
+}
+
+.wardrobe-btn-delete:active:not(:disabled) {
+  transform: translateY(2px);
+  box-shadow: 0 1px 0 var(--ww-charcoal), inset 0 2px 4px rgba(0, 0, 0, 0.15);
+}
+
+.wardrobe-btn-delete:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
