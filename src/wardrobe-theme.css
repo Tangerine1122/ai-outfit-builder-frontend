@@ -752,8 +752,8 @@ text-shadow:
 /* ─── Closet grid ─── */
 .wardrobe-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(min(155px, 100%), 1fr));
-  gap: clamp(0.85rem, 2.5vw, 1.35rem);
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 1rem;
   max-width: 1000px;
   margin: 0 auto;
 }
@@ -791,11 +791,11 @@ text-shadow:
 }
 
 .wardrobe-image {
-  height: clamp(135px, 28vw, 175px);
+  height: 200px;
   width: 100%;
-  object-fit: contain;
+  object-fit: cover;
   margin-bottom: 0.6rem;
-  background: #ffffff;
+  border-radius: 8px;
 }
 
 .wardrobe-paper-doll-image {
