@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 const API_URL = import.meta.env.VITE_API_URL;
 
 // The slots she can manually build an outfit from, in display order.
-const SLOTS = ["top", "bottom", "shoes", "outerwear", "accessory"];
+const SLOTS = ["top", "bottom", "shoes", "dress", "one-piece", "outerwear", "accessory"];
 
 function MixMatchPage() {
   const [allClothes, setAllClothes] = useState([]);

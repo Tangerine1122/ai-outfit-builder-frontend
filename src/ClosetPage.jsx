@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 
 const API_URL = import.meta.env.VITE_API_URL;
 
-const CATEGORIES = ["top", "bottom", "shoes", "dress", "outerwear", "accessory"];
+const CATEGORIES = ["top", "bottom", "shoes", "dress", "outerwear", "accessory", "one-piece"];
 
 function ClosetPage() {
   const [clothes, setClothes] = useState([]);
