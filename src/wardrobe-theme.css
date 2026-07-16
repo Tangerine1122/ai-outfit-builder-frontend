@@ -788,23 +788,23 @@ text-shadow:
     0 0 0 3px #fff,
     0 0 0 5px var(--ww-gold),
     0 4px 12px rgba(0, 0, 0, 0.15);
-  padding: 8px;
+  padding: 4px;
   box-sizing: border-box;
 }
 
 .wardrobe-image {
-  height: 200px;
+  height: 260px;
   width: 100%;
   object-fit: contain;
   margin-bottom: 0.6rem;
   border-radius: 8px;
   background-color: #ffffff;
-  padding: 8px;
+  padding: 4px;
   box-sizing: border-box;
 }
 
 .wardrobe-paper-doll-image {
-  height: clamp(125px, 30vw, 155px);
+  height: clamp(200px, 40vw, 260px);
 }
 
 .wardrobe-card-text {
