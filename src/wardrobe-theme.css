@@ -780,14 +780,16 @@ text-shadow:
 .wardrobe-image,
 .wardrobe-paper-doll-image {
   width: 100%;
-  object-fit: cover;
+  object-fit: contain;
   border-radius: 8px;
   border: 2px solid var(--ww-charcoal);
-  background: #fff;
+  background: #ffffff;
   box-shadow:
     0 0 0 3px #fff,
     0 0 0 5px var(--ww-gold),
     0 4px 12px rgba(0, 0, 0, 0.15);
+  padding: 8px;
+  box-sizing: border-box;
 }
 
 .wardrobe-image {
